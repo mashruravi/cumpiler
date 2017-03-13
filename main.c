@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "lexer.h";
+
 void printUseError() {
     printf("No source file specified.\n");
     printf("Usage: cumpiler path/to/source/file\n");
