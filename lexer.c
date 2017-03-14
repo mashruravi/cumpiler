@@ -11,6 +11,9 @@ void lexer(char* pathToFile) {
     // Try to open the file
     FILE* filePointer = _openSourceFile(pathToFile);
 
+    // Get a token stream 
+    char** tokenStream = _getTokenStream(filePointer);
+
     // Be good and close the source file
     _closeFile(filePointer);
 }
@@ -33,4 +36,27 @@ FILE* _openSourceFile(char* path) {
 
 void _closeFile(FILE* fp) {
     fclose(fp);
+}
+
+char** _getTokenStream(FILE* fp) {
+
+    int lineNumber = 1;  
+
+    // Read source file character by character
+    while(!feof(fp)) {
+
+        // Get the next character in the stream
+        char next = getc(fp);
+
+        // On encountering a blank space
+        if(next == ' ') {
+
+        }
+
+        // On encountering new line
+        else if (next == '\n') {
+            lineNumber++;
+        }
+    }
+
 }
