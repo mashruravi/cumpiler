@@ -1,5 +1,5 @@
 CC = gcc
-FILES = main.c
+FILES = main.c lexer.c
 OUT_EXE = cumpiler
 
 $(OUT_EXE): $(FILES)

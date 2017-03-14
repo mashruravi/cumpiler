@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-#include "lexer.h";
+#include "lexer.h"
 
 void printUseError() {
     printf("No source file specified.\n");
@@ -19,7 +19,8 @@ int main(int argc, char *argv[]) {
 
 		// Correct number of arguments
 		case 2: {
-			printf("Correct Usage!");
+			// Call lexer with path to source file
+			lexer(argv[1]);
 			break;
 		}
 
