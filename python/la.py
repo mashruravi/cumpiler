@@ -13,7 +13,7 @@ token_map = {
     '*': 'TK_MUL',
     '/': 'TK_DIV',
     '~': 'TK_NOT',
-    '&': 'TK_NOT',
+    '&': 'TK_AND',
     '|': 'TK_OR',
     '<': 'TK_LESS',
     '<=': 'TK_LEQ',
