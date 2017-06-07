@@ -46,15 +46,15 @@ def initialize(file_path):
 
             except KeyError:
                 # Check if token is identifier
-                if re.match('[a-zA-Z][a-zA-Z0-9_]*', token):
+                if re.match('^[a-zA-Z][a-zA-Z0-9_]*$', token):
                     token_list.append('TK_IDEN(' + token + ')')
 
                 # Check if token is a real
-                elif re.match('[0-9]+.[0-9]+', token):
+                elif re.match('^[0-9]+.[0-9]+$', token):
                     token_list.append('TK_REAL')
 
                 # Check if token is an int
-                elif re.match('[0-9]+', token):
+                elif re.match('^[0-9]+$', token):
                     token_list.append('TK_INT')
 
                 # Else, invalid token, print line at which error occurs
