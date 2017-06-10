@@ -1,0 +1,82 @@
+grammar {
+  lexer {
+    r'\s+' -> null
+    r'TK_KEY_DEFINE' -> :define
+    r'TK_KEY_AS' -> :as
+    r'TK_KEY_IS' -> :is
+    r'TK_KEY_IF' -> :if
+    r'TK_KEY_THEN' -> :then
+    r'TK_KEY_ELSE' -> :else
+    r'TK_KEY_ENDIF' -> :endif
+    r'TK_PLUS' -> :plus
+    r'TK_MINUS' -> :minus
+    r'TK_MUL' -> :mul
+    r'TK_DIV' -> :div
+    r'TK_NOT' -> :not
+    r'TK_AND' -> :and
+    r'TK_OR' -> :or
+    r'TK_LESS' -> :less
+    r'TK_LEQ' -> :leq
+    r'TK_GT' -> :gt
+    r'TK_GEQ' -> :geq
+    r'TK_EQ' -> :eq
+    r'TK_ASSIGN' -> :assign
+    r'TK_OPEN' -> :open
+    r'TK_CLOSE' -> :close
+    r'TK_SEMI' -> :semi
+    r'TK_COMMA' -> :comma
+    r'TK_INT' -> :int
+    r'TK_REAL' -> :real
+    r'TK_IDEN' -> :identifier
+  }
+  parser {
+    $program = $macros $statements
+    $macros = $macro $macros
+    $macros = :_empty
+    $macro = :define $macro_template :as $expression
+    $macro_template = :identifier $m1
+    $m1 = :open $identifier_list :close
+    $m1 = :_empty
+    $identifier_list = :identifier $i1
+    $i1 = :comma $identifier_list
+    $i1 = :_empty
+    $statements = $statement $statements
+    $statements = :_empty
+    $statement = $assign_stmt
+    $statement = $if_stmt
+    $assign_stmt = :identifier :is $expression
+    $if_stmt = :if $condition :then $statements :else $statements :endif
+    $condition = $c1 $c11
+    $c11 = :or $c1 $c11
+    $c11 = :_empty
+    $c1 = $c2 $c21
+    $c21 = :and $c2 $c21
+    $c21 = :_empty
+    $c2 = $c3 $c31
+    $c31 = :eq $c3 $c31
+    $c31 = :_empty
+    $c3 = $c4 $c41
+    $c41 = :less $c4 $c41
+    $c41 = :leq $c4 $c41
+    $c41 = :gt $c4 $c41
+    $c41 = :geq $c4 $c41
+    $c41 = :_empty
+    $c4 = :not $c5
+    $c4 = $c5
+    $c5 = :int
+    $c5 = :real
+    $c5 = :open $condition :close
+    $expression = $term $e1
+    $e1 = :plus $term $e1
+    $e1 = :minus $term $e1
+    $e1 = :_empty
+    $term = $factor $t1
+    $t1 = :mul $factor $t1
+    $t1 = :div $factor $t1
+    $t1 = :_empty
+    $factor = :identifier
+    $factor = :real
+    $factor = :int
+    $factor = :open $expression :close
+  }
+}
