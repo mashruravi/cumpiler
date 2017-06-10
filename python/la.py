@@ -48,7 +48,7 @@ def initialize(file_path):
             except KeyError:
                 # Check if token is identifier
                 if re.match('^[a-zA-Z][a-zA-Z0-9_]*$', token):
-                    token_list.append('TK_IDEN(' + token + ')')
+                    token_list.append('TK_IDEN')
 
                 # Check if token is a real
                 elif re.match('^[0-9]+.[0-9]+$', token):
