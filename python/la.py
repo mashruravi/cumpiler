@@ -23,7 +23,8 @@ token_map = {
     '=': 'TK_ASSIGN',
     '(': 'TK_OPEN',
     ')': 'TK_CLOSE',
-    ';': 'TK_SEMI'
+    ';': 'TK_SEMI',
+    ',': 'TK_COMMA'
 }
 
 token_list = list()
