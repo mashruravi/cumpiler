@@ -11,4 +11,4 @@ if __name__ == "__main__":
 
   tree = parser.parse(tokens)
 
-  print(tree.dumps(indent=2))
+  print(tree.dumps(indent=4))

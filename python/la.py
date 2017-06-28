@@ -60,8 +60,8 @@ def initialize(file_path):
 
                 # Else, invalid token, print line at which error occurs
                 else:
-                    print "Invalid syntax: " + token + ", at line " + str(index + 1)
-                    print line
+                    print("Invalid syntax: " + token + ", at line " + str(index + 1))
+                    print(line)
                     return
 
 
